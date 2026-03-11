@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f5ede0;
+  background-image:
+    radial-gradient(ellipse at 15% 15%, #e8d5b7 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 85%, #d4b896 0%, transparent 55%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Decorative music notes fixed to viewport */
+.note {
+  position: fixed;
+  color: #2c1a0e;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+.n1 { top: 6%;    left: 4%;   font-size: 2.5rem; transform: rotate(-15deg); }
+.n2 { top: 10%;   right: 5%;  font-size: 1.8rem; transform: rotate(10deg);  }
+.n3 { bottom: 10%; left: 6%;  font-size: 1.6rem; transform: rotate(5deg);   }
+.n4 { bottom: 6%; right: 4%;  font-size: 2.2rem; transform: rotate(-8deg);  }

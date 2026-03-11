@@ -1,0 +1,296 @@
+/* ── App layout ─────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 640px;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.28em;
+  font-size: 0.8rem;
+  color: #c0773a;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #2c1a0e;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #7a5c3e;
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+}
+
+.badge {
+  background: #2c1a0e;
+  color: #f5ede0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* ── Card scene (3-D perspective wrapper) ───────────────── */
+.card-scene {
+  width: 100%;
+  height: 320px;
+  perspective: 1200px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ── Shared card face styles ────────────────────────────── */
+.card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+/* ── Vinyl record decoration ────────────────────────────── */
+.vinyl-deco {
+  position: absolute;
+  right: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(circle, transparent 0px, transparent 6px, rgba(44,26,14,0.07) 7px, transparent 7px),
+    radial-gradient(circle, #3a2010 0%, #1a1008 100%);
+  opacity: 0.45;
+  flex-shrink: 0;
+}
+
+.vinyl-deco::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #f5ede0;
+  opacity: 0.5;
+}
+
+/* ── Front face ─────────────────────────────────────────── */
+.card-front {
+  background: #fdf6ec;
+  border: 2px solid #e4c99a;
+  box-shadow: 0 8px 32px rgba(44,26,14,0.14), 0 2px 8px rgba(44,26,14,0.08);
+}
+
+/* ── Back face ──────────────────────────────────────────── */
+.card-back {
+  background: #2c1a0e;
+  border: 2px solid #4a2e14;
+  box-shadow: 0 8px 32px rgba(44,26,14,0.25);
+  transform: rotateY(180deg);
+}
+
+.card-back .vinyl-deco {
+  right: auto;
+  left: -35px;
+  background:
+    repeating-radial-gradient(circle, transparent 0px, transparent 6px, rgba(255,255,255,0.05) 7px, transparent 7px),
+    radial-gradient(circle, #4a2810 0%, #1a1008 100%);
+  opacity: 0.5;
+}
+
+.card-back .vinyl-deco::after {
+  background: #2c1a0e;
+}
+
+/* ── Card text content ──────────────────────────────────── */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 2;
+  max-width: 85%;
+}
+
+/* ── Back face meta row (Year · Album) ──────────────────── */
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.card-meta-value {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #f5ede0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.card-meta-divider {
+  color: #f5ede0;
+  opacity: 0.3;
+  font-size: 1.2rem;
+  align-self: center;
+  padding-bottom: 4px;
+}
+
+.card-description {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: #f5ede0;
+  opacity: 0.75;
+  text-align: center;
+  line-height: 1.55;
+  border-top: 1px solid rgba(245,237,224,0.12);
+  padding-top: 0.6rem;
+}
+
+.card-tag {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  opacity: 0.5;
+}
+.card-front .card-tag { color: #2c1a0e; }
+.card-back  .card-tag { color: #f5ede0; }
+
+.card-text {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  text-align: center;
+  line-height: 1.35;
+}
+.card-front .card-text { color: #2c1a0e; }
+.card-back  .card-text { color: #f5ede0; }
+
+.card-hint {
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  opacity: 0.4;
+}
+.card-front .card-hint { color: #2c1a0e; }
+.card-back  .card-hint { color: #f5ede0; }
+
+/* ── Controls ───────────────────────────────────────────── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.progress {
+  color: #7a5c3e;
+  font-size: 0.82rem;
+  font-weight: 300;
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ── Back button ────────────────────────────────────────── */
+.btn-back {
+  background: transparent;
+  color: #7a5c3e;
+  border: 2px solid #c9a87a;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-back:hover:not(:disabled) {
+  background: #e8d5b7;
+  border-color: #a07848;
+  color: #2c1a0e;
+}
+
+.btn-back:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ── Next button ────────────────────────────────────────── */
+.btn-next {
+  background: #c0773a;
+  color: #fdf6ec;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7a4b1a, 0 6px 18px rgba(192,119,58,0.28);
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+  position: relative;
+  top: 0;
+}
+
+.btn-next:hover {
+  background: #d4874a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #7a4b1a, 0 10px 24px rgba(192,119,58,0.35);
+}
+
+.btn-next:active {
+  top: 4px;
+  transform: translateY(0);
+  box-shadow: 0 0 0 #7a4b1a;
+}
