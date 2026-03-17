@@ -26,7 +26,7 @@ body {
   pointer-events: none;
   user-select: none;
 }
-.n1 { top: 6%;    left: 4%;   font-size: 2.5rem; transform: rotate(-15deg); }
-.n2 { top: 10%;   right: 5%;  font-size: 1.8rem; transform: rotate(10deg);  }
-.n3 { bottom: 10%; left: 6%;  font-size: 1.6rem; transform: rotate(5deg);   }
-.n4 { bottom: 6%; right: 4%;  font-size: 2.2rem; transform: rotate(-8deg);  }
+.n1 { top: 6%;     left: 4%;   font-size: 2.5rem; transform: rotate(-15deg); }
+.n2 { top: 10%;    right: 5%;  font-size: 1.8rem; transform: rotate(10deg);  }
+.n3 { bottom: 10%; left: 6%;   font-size: 1.6rem; transform: rotate(5deg);   }
+.n4 { bottom: 6%;  right: 4%;  font-size: 2.2rem; transform: rotate(-8deg);  }
